@@ -1,12 +1,18 @@
 # Honor
 
-TODO: Write a gem description
+Honor adds support for common gamification features such as points, leaderboards, and achievements.
+
+## Overview
+
+Honor allows you to easily integrate points, leaderboards, and achievements into your Rails application.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'honor'
+```ruby
+ gem 'honor'
+```
 
 And then execute:
 
