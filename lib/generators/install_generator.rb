@@ -1,8 +1,9 @@
 require 'rails/generators'
+require 'rails/generators/active_record'
 require 'rails/generators/migration'
 
 module Honor
-  class MigrationGenerator < Rails::Generators::Base
+  class InstallGenerator < Rails::Generators::Base
     include Rails::Generators::Migration
 
     desc "Generates migration for Points and Scorecard"
@@ -31,9 +32,9 @@ module Honor
 
     def create_migration_file
       if self.class.orm_has_migration?
-        migration_template 'migration.rb', 'db/migrate/honor_migration'
+        migration_template 'create_points.rb', 'db/migrate/create_honor_points.rb'
+        migration_template 'create_scorecards.rb', 'db/migrate/create_honor_scorecards.rb'
       end
     end
   end
 end
-
