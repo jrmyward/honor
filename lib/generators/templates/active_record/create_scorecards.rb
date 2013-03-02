@@ -10,5 +10,6 @@ class CreateHonorScorecardsMigration < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :scorecards, :user_id
   end
 end
