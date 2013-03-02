@@ -10,13 +10,14 @@ module Honor
   def self.included(receiver)
     receiver.class_eval %Q{
       has_many :points, :class_name => "Honor::Point", :foreign_key => "user_id", :dependent => :destroy
+      has_one :scorecard, :class_name => "Honor::Scorecard", :foreign_key => "user_id", :dependent => :destroy
     }
 
-    Point.class_eval %Q{
+    Honor::Point.class_eval %Q{
       belongs_to :#{receiver.to_s.underscore}, :class_name => "#{receiver.to_s}", :foreign_key => "user_id"
     }
 
-    Scorecard.class_eval %Q{
+    Honor::Scorecard.class_eval %Q{
       belongs_to :#{receiver.to_s.underscore}, :class_name => "#{receiver.to_s}", :foreign_key => "user_id"
     }
   end

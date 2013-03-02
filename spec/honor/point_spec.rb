@@ -6,6 +6,11 @@ describe Honor::Point do
   before(:each) do
     Time.zone = "Central Time (US & Canada)"
   end
+
+  it "should respond to the reciever" do
+    Honor::Point.new.should respond_to(:user)
+  end
+
   describe "Method" do
     describe "#give_to()" do
       it "should add points to a given user" do

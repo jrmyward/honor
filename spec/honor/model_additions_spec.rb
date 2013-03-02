@@ -11,6 +11,10 @@ describe Honor do
     user.should respond_to(:points)
   end
 
+  it "should create an instance attribute for scorecard" do
+    user.should respond_to(:scorecard)
+  end
+
   describe "Method" do
     describe "add_points()" do
       it "should add points through the current user"  do
