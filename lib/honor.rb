@@ -2,6 +2,7 @@ require "active_record"
 require "active_record/version"
 require "honor/version"
 require "honor/point"
+require "honor/scorecard"
 
 module Honor
 
@@ -11,6 +12,10 @@ module Honor
     }
 
     Point.class_eval %Q{
+      belongs_to :#{receiver.to_s.underscore}, :class_name => "#{receiver.to_s}", :foreign_key => "user_id"
+    }
+
+    Scorecard.class_eval %Q{
       belongs_to :#{receiver.to_s.underscore}, :class_name => "#{receiver.to_s}", :foreign_key => "user_id"
     }
   end

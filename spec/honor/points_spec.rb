@@ -3,6 +3,9 @@ require 'spec_helper'
 describe Honor::Point do
   let(:user) { User.create!({ first_name: 'James', last_name: 'Bond' }) }
 
+  before(:each) do
+    Time.zone = "Central Time (US & Canada)"
+  end
   describe "Method" do
     describe "#give_to()" do
       it "should add points to a given user" do
@@ -24,30 +27,29 @@ describe Honor::Point do
     end
   end
 
-  # describe "Scorecard" do
-  #   before(:each) do
-  #     seed_points(user.id)
-  #     Timecop.freeze(2012, 12, 4, 16, 00)
-  #   end
+  describe "Scorecard" do
+    before(:each) do
+      seed_points(user.id)
+      Timecop.freeze(2012, 12, 4, 16, 00)
+    end
 
-  #   after(:each) do
-  #     Timecop.return
-  #   end
+    after(:each) do
+      Timecop.return
+    end
 
-  #   it "should update after Points are saved" do
-  #     sc = Scorecard.find_by_user_id(user.id)
-  #     sc.should_not be_nil
-  #     sc.daily.should == 50
-  #     sc.weekly.should == 50
-  #     sc.monthly.should == 50
-  #     sc.yearly.should == 150
-  #     sc.lifetime.should == 150
-  #   end
-  # end
+    it "should update after Points are saved" do
+      sc = Honor::Scorecard.find_by_user_id(user.id)
+      sc.should_not be_nil
+      sc.daily.should == 50
+      sc.weekly.should == 50
+      sc.monthly.should == 50
+      sc.yearly.should == 150
+      sc.lifetime.should == 150
+    end
+  end
 
   describe "Scopes" do
     before(:each) do
-      Time.zone = "Central Time (US & Canada)"
       seed_points(user.id)
       Timecop.freeze(2012, 11, 5, 16, 00)
     end

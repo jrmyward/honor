@@ -2,7 +2,7 @@ module Honor
   class Point < ActiveRecord::Base
     attr_accessible :category, :message, :user_id, :value
 
-    #after_save :update_scorecard
+    after_save :update_scorecard
 
     class << self
       def give_to(user_id, number_of_points, message = "Manually granted through 'add_points'", category = 'default')
@@ -37,15 +37,15 @@ module Honor
 
     private
 
-    # def update_scorecard
-    #   scorecard = Scorecard.find_or_initialize_by_user_id(user_id)
-    #   scorecard.daily     = Point.user_points_today(user_id)
-    #   scorecard.weekly    = Point.user_points_this_week(user_id)
-    #   scorecard.monthly   = Point.user_points_this_month(user_id)
-    #   scorecard.yearly    = Point.user_points_this_year(user_id)
-    #   scorecard.lifetime  = Point.user_points_total(user_id)
-    #   scorecard.save!
-    # end
+    def update_scorecard
+      scorecard = Honor::Scorecard.find_or_initialize_by_user_id(user_id)
+      scorecard.daily     = Honor::Point.user_points_today(user_id)
+      scorecard.weekly    = Honor::Point.user_points_this_week(user_id)
+      scorecard.monthly   = Honor::Point.user_points_this_month(user_id)
+      scorecard.yearly    = Honor::Point.user_points_this_year(user_id)
+      scorecard.lifetime  = Honor::Point.user_points_total(user_id)
+      scorecard.save!
+    end
 
   end
 end
