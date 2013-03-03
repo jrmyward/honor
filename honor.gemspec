@@ -8,7 +8,7 @@ Gem::Specification.new do |gem|
   gem.version       = Honor::VERSION
   gem.authors       = ["Jeremy Ward"]
   gem.email         = ["jrmy.ward@gmail.com"]
-  gem.description   = %q{Adds support for common gamification features such as points, leaderboards, and achievements.}
+  gem.description   = %q{Adds common gamification features such as points, leaderboards, and achievements to a Rails Application.}
   gem.summary       = %q{General gamification-centric reputation system for Rails Applications.}
   gem.homepage      = "https://github.com/jrmyward/honor"
 
