@@ -17,8 +17,8 @@ module Honor
       end
 
       def copy_migrations
-        migration_template 'create_points.rb', 'db/migrate/create_honor_points.rb'
-        migration_template 'create_scorecards.rb', 'db/migrate/create_honor_scorecards.rb'
+        migration_template 'create_honor_points.rb', 'db/migrate/create_honor_points.rb'
+        migration_template 'create_honor_scorecards.rb', 'db/migrate/create_honor_scorecards.rb'
       end
     end
   end

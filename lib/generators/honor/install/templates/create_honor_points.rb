@@ -1,4 +1,4 @@
-class CreateHonorPointsMigration < ActiveRecord::Migration
+class CreateHonorPoints < ActiveRecord::Migration
   def change
     create_table :points do |t|
       t.integer :user_id
