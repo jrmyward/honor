@@ -1,4 +1,4 @@
-class CreateHonorScorecardsMigration < ActiveRecord::Migration
+class CreateHonorScorecards < ActiveRecord::Migration
   def change
     create_table :scorecards do |t|
       t.integer :user_id
