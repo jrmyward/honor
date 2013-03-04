@@ -18,9 +18,9 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_runtime_dependency 'rails', '~> 3.0'
+  gem.add_development_dependency 'sqlite3'
   gem.add_development_dependency "rspec"
   gem.add_development_dependency 'ammeter'
-  gem.add_development_dependency "supermodel"
   gem.add_development_dependency "database_cleaner"
   gem.add_development_dependency "timecop"
 end
