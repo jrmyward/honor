@@ -44,6 +44,18 @@ module Honor
                             :sort_direction => 'desc'
         includes(:user).where('user_id IN (?)', scorecard_user_ids).order("#{opt[:rank_by]} #{opt[:sort_direction]}")
       end
+
+      def update_scorecards
+        Honor::Scorecard.where("updated_at < ?", 1.day.ago).find_each do |scorecard|
+          scorecard.update_attributes!({
+            daily: Honor::Point.user_points_today(scorecard.user_id),
+            weekly: Honor::Point.user_points_this_week(scorecard.user_id),
+            monthly: Honor::Point.user_points_this_month(scorecard.user_id),
+            yearly:  Honor::Point.user_points_this_year(scorecard.user_id),
+            lifetime: Honor::Point.user_points_total(scorecard.user_id)
+          })
+        end
+      end
     end
 
   end

@@ -35,14 +35,10 @@ describe Honor::Point do
   describe "Scorecard" do
     before(:each) do
       seed_points(user.id)
-      Timecop.freeze(2012, 12, 4, 16, 00)
-    end
-
-    after(:each) do
-      Timecop.return
     end
 
     it "should update after Points are saved" do
+      Timecop.freeze(2012, 12, 4, 16, 00)
       sc = Honor::Scorecard.find_by_user_id(user.id)
       sc.should_not be_nil
       sc.daily.should == 50
@@ -50,6 +46,21 @@ describe Honor::Point do
       sc.monthly.should == 50
       sc.yearly.should == 150
       sc.lifetime.should == 150
+      Timecop.return
+    end
+
+    describe "#update_scorecards" do
+      it "should set appropriate values for all cards" do
+        Timecop.freeze(2012, 12, 5, 16, 01)
+        Honor::Scorecard.update_scorecards
+        sc = Honor::Scorecard.find_by_user_id(user.id)
+        sc.daily.should == 0
+        sc.weekly.should == 50
+        sc.monthly.should == 50
+        sc.yearly.should == 150
+        sc.lifetime.should == 150
+        Timecop.return
+      end
     end
   end
 
