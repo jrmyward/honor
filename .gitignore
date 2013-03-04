@@ -12,10 +12,8 @@ lib/bundler/man
 pkg
 rdoc
 spec/*.log
-spec/config/database.yml
 spec/reports
 test/tmp
 test/version_tmp
 tmp
 .DS_Store
-honor.sqlite3
