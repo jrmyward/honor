@@ -1,4 +1,4 @@
-script: "cp spec/config/database.yml.sample spec/config/database.yml && bundle install && rake"
+script: "cp spec/config/database.yml.sample spec/config/database.yml && bundle install && bundle exec rake"
 language: ruby
 rvm:
   - 1.9.3
