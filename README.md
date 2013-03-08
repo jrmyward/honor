@@ -25,7 +25,7 @@ Install and run the migrations:
 
 ```shell
 rails g honor:install
-rails db:migrate
+rake db:migrate
 ```
 
 ## Usage
