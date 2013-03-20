@@ -1,5 +1,4 @@
-# Honor
-[![Build Status](https://travis-ci.org/jrmyward/honor.png?branch=master)](https://travis-ci.org/jrmyward/honor)
+# Honor [![Build Status](https://travis-ci.org/jrmyward/honor.png?branch=master)](https://travis-ci.org/jrmyward/honor)
 
 Honor adds support for common gamification features such as points, leaderboards, and achievements.
 
