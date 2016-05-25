@@ -1,3 +1,4 @@
+require 'rails/all'
 require 'rubygems'
 require 'honor'
 require 'ammeter/init'
@@ -16,7 +17,7 @@ if File.exists?(database_yml)
   config = ActiveRecord::Base.configurations[db_name]
 
   begin
-    ActiveRecord::Base.establish_connection(db_name)
+    ActiveRecord::Base.establish_connection(db_name.to_sym)
     ActiveRecord::Base.connection
   rescue
     case db_name
@@ -34,12 +35,12 @@ if File.exists?(database_yml)
   ActiveRecord::Base.logger = Logger.new(File.join(File.dirname(__FILE__), "debug.log"))
   ActiveRecord::Base.default_timezone = :utc
 
-  ActiveRecord::Base.silence do
+  #ActiveRecord::Base.logger.silence do
     ActiveRecord::Migration.verbose = false
 
     load(File.expand_path('../config/schema.rb', __FILE__))
     load(File.expand_path('../config/models.rb', __FILE__))
-  end
+  #end
 
 else
   raise "Please create #{database_yml} first to configure your database. Take a look at: spec/config/database.yml.sample"

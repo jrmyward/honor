@@ -8,11 +8,11 @@ describe Honor do
   end
 
   it "should create an instance attribute for points" do
-    user.should respond_to(:points)
+    expect(user).to respond_to(:points)
   end
 
   it "should create an instance attribute for scorecard" do
-    user.should respond_to(:scorecard)
+    expect(user).to respond_to(:scorecard)
   end
 
   describe "Method" do
@@ -31,7 +31,7 @@ describe Honor do
       end
       it "should set the value to a negative number" do
         p = user.subtract_points(25, 'Manual Add', 'Test')
-        p.value.should == -25
+        expect(p.value).to equal(-25)
       end
     end
   end
@@ -49,46 +49,46 @@ describe Honor do
     context "User" do
       describe "points_total" do
         it "should return a sum of all of the user's points" do
-          user.points_total.should == 150
+          expect(user.points_total).to equal(150)
         end
         it "should return a sum of user points for a given category" do
-          user.points_total('Test 2').should == 75
+          expect(user.points_total('Test 2')).to equal(75)
         end
       end
 
       describe "points_today" do
         it "should return a sum of all of the user's points" do
-          user.points_today.should == 50
+          expect(user.points_today).to equal(50)
         end
         it "should return a sum of user points for a given category" do
-          user.points_today('Test 2').should == 25
+          expect(user.points_today('Test 2')).to equal(25)
         end
       end
 
       describe "points_this_week" do
         it "should return a sum of all of the user's points" do
-          user.points_this_week.should == 50
+          expect(user.points_this_week).to equal(50)
         end
         it "should return a sum of user points for a given category" do
-          user.points_this_week('Test 2').should == 25
+          expect(user.points_this_week('Test 2')).to equal(25)
         end
       end
 
       describe "points_this_month" do
         it "should return a sum of all of the user's points" do
-          user.points_this_month.should == 150
+          expect(user.points_this_month).to equal(150)
         end
         it "should return a sum of user points for a given category" do
-          user.points_this_month('Test 2').should == 75
+          expect(user.points_this_month('Test 2')).to equal(75)
         end
       end
 
       describe "points_this_year" do
         it "should return a sum of all of the user's points" do
-          user.points_this_year.should == 150
+          expect(user.points_this_year).to equal(150)
         end
         it "should return a sum of user points for a given category" do
-          user.points_this_year('Test 2').should == 75
+          expect(user.points_this_year('Test 2')).to equal(75)
         end
       end
     end
