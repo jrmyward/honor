@@ -18,10 +18,10 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_runtime_dependency 'rails', '~> 4.0'
-  gem.add_development_dependency 'sqlite3', '~> 0'
-  gem.add_development_dependency 'rspec', '~> 0'
-  gem.add_development_dependency 'ammeter', '~> 0'
-  gem.add_development_dependency 'database_cleaner', '~> 0'
-  gem.add_development_dependency 'timecop', '~> 0'
+  gem.add_runtime_dependency 'rails', '>= 4.0'
+  gem.add_development_dependency 'sqlite3'
+  gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'ammeter'
+  gem.add_development_dependency 'database_cleaner'
+  gem.add_development_dependency 'timecop'
 end

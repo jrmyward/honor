@@ -1,3 +1,7 @@
+## v.2.0.1
+
+* Fix dvelopment dependencies
+
 ## v.2.0.0
 
 * Updated to be compatible with Rails 4
