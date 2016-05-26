@@ -1,3 +1,7 @@
+## v.2.0.0
+
+* Updated to be compatible with Rails 4
+
 ## v1.0.3
 
 * Added method to batch update scorecards
