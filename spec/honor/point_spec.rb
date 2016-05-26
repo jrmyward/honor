@@ -8,7 +8,7 @@ describe Honor::Point do
   end
 
   it "should respond to the reciever" do
-    Honor::Point.new.should respond_to(:user)
+    expect(Honor::Point.new).to respond_to(:user)
   end
 
   describe "Method" do
@@ -27,7 +27,7 @@ describe Honor::Point do
       end
       it "should set the value to a negative number" do
         p = Honor::Point.take_from(user.id, 25, 'Manual take away', 'Test')
-        p.value.should == -25
+        expect(p.value).to equal(-25)
       end
     end
   end
@@ -40,12 +40,12 @@ describe Honor::Point do
     it "should update after Points are saved" do
       Timecop.freeze(2012, 12, 4, 16, 00)
       sc = Honor::Scorecard.find_by_user_id(user.id)
-      sc.should_not be_nil
-      sc.daily.should == 50
-      sc.weekly.should == 50
-      sc.monthly.should == 50
-      sc.yearly.should == 150
-      sc.lifetime.should == 150
+      expect(sc).not_to be_nil
+      expect(sc.daily).to equal(50)
+      expect(sc.weekly).to equal(50)
+      expect(sc.monthly).to equal(50)
+      expect(sc.yearly).to equal(150)
+      expect(sc.lifetime).to equal(150)
       Timecop.return
     end
 
@@ -54,11 +54,11 @@ describe Honor::Point do
         Timecop.freeze(2012, 12, 5, 16, 01)
         Honor::Scorecard.update_scorecards
         sc = Honor::Scorecard.find_by_user_id(user.id)
-        sc.daily.should == 0
-        sc.weekly.should == 50
-        sc.monthly.should == 50
-        sc.yearly.should == 150
-        sc.lifetime.should == 150
+        expect(sc.daily).to equal(0)
+        expect(sc.weekly).to equal(50)
+        expect(sc.monthly).to equal(50)
+        expect(sc.yearly).to equal(150)
+        expect(sc.lifetime).to equal(150)
         Timecop.return
       end
     end
@@ -77,31 +77,31 @@ describe Honor::Point do
     context "Self" do
       describe "user_points_total" do
         it "should return a sum of all of the user's points" do
-          Honor::Point.user_points_total(user.id).should == 150
+          expect(Honor::Point.user_points_total(user.id)).to equal(150)
         end
       end
 
       describe "user_points_today" do
         it "should return a sum of all of the user's points" do
-          Honor::Point.user_points_today(user.id).should == 50
+          expect(Honor::Point.user_points_today(user.id)).to equal(50)
         end
       end
 
       describe "user_points_this_week" do
         it "should return a sum of all of the user's points" do
-          Honor::Point.user_points_this_week(user.id).should == 50
+          expect(Honor::Point.user_points_this_week(user.id)).to equal(50)
         end
       end
 
       describe "user_points_this_month" do
         it "should return a sum of all of the user's points" do
-          Honor::Point.user_points_this_month(user.id).should == 150
+          expect(Honor::Point.user_points_this_month(user.id)).to equal(150)
         end
       end
 
       describe "user_points_this_year" do
         it "should return a sum of all of the user's points" do
-          Honor::Point.user_points_this_year(user.id).should == 150
+          expect(Honor::Point.user_points_this_year(user.id)).to equal(150)
         end
       end
     end
